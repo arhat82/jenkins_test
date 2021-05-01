@@ -42,7 +42,7 @@ pipeline{
             steps{
                 echo "========deploying A========"
                 withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
-                    sh 'echo ssh -i $GITHUB_KEY -l git -o StrictHostKeyChecking=no'
+                    sh ("touch /home/ubuntu/file2.txt")
                 }
             }
         }
