@@ -41,7 +41,7 @@ pipeline{
         stage("deploy"){
             steps{
                 echo "========deploying A========"
-                withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
+                withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: 'ubuntu')]) {
                     sh ("touch /home/ubuntu/file2.txt")
                 }
             }
