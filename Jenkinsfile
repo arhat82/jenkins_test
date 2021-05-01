@@ -39,7 +39,9 @@ pipeline{
             steps{
                 echo "========deploying A========"
                 echo "Deploying with ${SERVER_CREDENTIALS}"
-                sshagent (credentials('servidor_nuevo'))
+                withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
+                    
+                }
             }
         }
     }
