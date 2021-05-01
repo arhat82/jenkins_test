@@ -36,7 +36,7 @@ pipeline{
             steps{
                 echo "========deploying A========"
                 withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
-                    sh 'echo "Tu hermana en tanga">/home/ubuntu/hermana.txt'
+                    sh "ssh -i $SSH_SERVIDOR ubuntu@ec2-54-232-62-250.sa-east-1.compute.amazonaws.com -o StrictHostKeyChecking=no 'echo "Tuhermanaentanga">/home/ubuntu/mensaje.txt'" 
                 }
             }
         }
