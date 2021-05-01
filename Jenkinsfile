@@ -1,3 +1,10 @@
+node {
+    def remote = [:]
+    remote.name = 'test'
+    remote.host = 'ec2-54-232-62-250.sa-east-1.compute.amazonaws.com'
+    remote.user = 'ubuntu'
+}
+
 pipeline{
 
     agent any
@@ -36,7 +43,6 @@ pipeline{
             steps{
                 echo "========deploying A========"
                 withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
-                    remote.user = ubuntu
                     remote.identityFile = SSH_SERVIDOR
                     sshCommand remote: remote, command: 'touch /home/ubuntu/file.txt'
                 }
