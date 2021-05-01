@@ -41,8 +41,8 @@ pipeline{
         stage("deploy"){
             steps{
                 echo "========deploying A========"
-                withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: 'ubuntu')]) {
-                    sh ("touch /home/ubuntu/file2.txt")
+                withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
+                    sh "ssh -i ${SSH_SERVIDOR} ubuntu@ec2-54-232-62-250.sa-east-1.compute.amazonaws.com -x 'touch /home/ubuntu/text4.txt'"
                 }
             }
         }
