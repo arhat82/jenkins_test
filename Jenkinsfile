@@ -6,7 +6,6 @@ pipeline{
 
     environment {
         NEW_VERSION = '1.4.5'
-        SERVER_CREDENTIALS = credentials('servidor_nuevo')
     }
 
     stages{
@@ -40,7 +39,7 @@ pipeline{
                 echo "========deploying A========"
                 echo "Deploying with ${SERVER_CREDENTIALS}"
                 withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
-                    
+
                 }
             }
         }
