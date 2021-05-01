@@ -36,7 +36,7 @@ pipeline{
             steps{
                 echo "========deploying A========"
                 withCredentials([sshUserPrivateKey(credentialsId: 'servidor_nuevo', keyFileVariable: 'SSH_SERVIDOR', passphraseVariable: '', usernameVariable: '')]) {
-                    
+                    sh 'echo "Tu hermana en tanga">/home/ubuntu/hermana.txt'
                 }
             }
         }
