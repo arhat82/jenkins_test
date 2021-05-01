@@ -44,18 +44,4 @@ pipeline{
         }
     }
 
-    post {
-        always {
-            //Se ejecuta always despues de que se ejecuto el Jenkinsfile
-            echo "Always"
-        }
-        success {
-            //Script on success
-            echo "Success"
-        }
-        failure {
-            //En caso de failure
-            echo "Failure"
-        }
-    }
 }
